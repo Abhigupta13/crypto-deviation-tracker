@@ -1,14 +1,10 @@
-// src/utils/cryptoHelper.js
 const axios = require('axios');
 const CryptoData = require('../models/CryptoData');
-
-// Load environment variables
 require('dotenv').config();
 
-// Define the CoinGecko API endpoint and the coins
 const COINS = ['bitcoin', 'matic-network', 'ethereum'];
 const API_URL = 'https://api.coingecko.com/api/v3/simple/price';
-const API_KEY = process.env.API_KEY; // Access the API key from environment variables
+const API_KEY = process.env.API_KEY; 
 
 // Function to fetch cryptocurrency data from CoinGecko
 const fetchCryptoData = async (coin) => {
@@ -19,7 +15,7 @@ const fetchCryptoData = async (coin) => {
         vs_currencies: 'usd',
         include_market_cap: 'true',
         include_24hr_change: 'true',
-        x_cg_demo_api_key: API_KEY,  // Use API key here
+        x_cg_demo_api_key: API_KEY,  
       },
     });
 
@@ -39,7 +35,7 @@ const fetchCryptoData = async (coin) => {
 // Function to store fetched data in MongoDB
 const storeCryptoData = async (data) => {
     if (data) {
-      // Directly create a new record without checking for an existing one
+      
       const newRecord = new CryptoData(data);
       await newRecord.save();
   

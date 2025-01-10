@@ -1,11 +1,11 @@
-// src/models/CryptoData.js
+
 const mongoose = require('mongoose');
 
 const cryptoDataSchema = new mongoose.Schema(
   {
     coin: {
       type: String,
-      enum: ['bitcoin', 'matic-network', 'ethereum'], // Limit the coin options to these three
+      enum: ['bitcoin', 'matic-network', 'ethereum'], 
       required: true,
     },
     price: {
@@ -26,7 +26,7 @@ const cryptoDataSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true, 
   }
 );
 

@@ -1,13 +1,11 @@
-// src/utils/cronJob.js
 const cron = require('node-cron');
-const { fetchCryptoData, storeCryptoData } = require('./cryptoHelper');  // Adjust the path if necessary
+const { fetchCryptoData, storeCryptoData } = require('./cryptoHelper'); 
 
-// Schedule the job to run every minute
+// Schedule the job to run every 2 hours (cron syntax: '0 */2 * * *')
 const startCronJob = () => {
-  cron.schedule('* * * * *', async () => {
+  cron.schedule('0 */2 * * *', async () => {
     console.log('Fetching crypto data...');
 
-    // Loop through each coin and fetch and store its data
     for (const coin of ['bitcoin', 'matic-network', 'ethereum']) {
       const data = await fetchCryptoData(coin);
       await storeCryptoData(data);
@@ -17,4 +15,4 @@ const startCronJob = () => {
   });
 };
 
-module.exports = startCronJob;  // Ensure correct export
+module.exports = startCronJob;  

@@ -1,21 +1,18 @@
 const express = require('express');
-const dotenv = require('dotenv'); // Ensure dotenv is loaded to use environment variables
-const connectDB = require('./src/config/db'); // Adjust if path is incorrect
-const cryptoRoutes = require('./src/routes/cryptoRoutes'); // Adjust if path is incorrect
-const errorHandler = require('./src/middleware/errorHandler'); // Adjust if path is incorrect
-const startCronJob = require('./src/utils/cronJob'); // Corrected path for cron job
+const dotenv = require('dotenv'); 
+const connectDB = require('./src/config/db'); 
+const cryptoRoutes = require('./src/routes/cryptoRoutes');
+const errorHandler = require('./src/middleware/errorHandler'); 
+const startCronJob = require('./src/utils/cronJob'); 
 
-dotenv.config(); // Load environment variables
+dotenv.config(); 
 
 const app = express();
 
-// Connect to the database
 connectDB();
 
-// Start the background cron job
 startCronJob();
 
-// Middleware
 app.use(express.json());
 
 // Routes

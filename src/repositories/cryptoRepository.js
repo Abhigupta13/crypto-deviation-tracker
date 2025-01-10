@@ -1,4 +1,3 @@
-// src/repositories/cryptoRepository.js
 const CryptoData = require('../models/CryptoData');
 
 const saveCryptoData = async (coin, price, marketCap, change24h) => {
